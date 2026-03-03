@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d340581e3fa79c48b1401265c761387
+guid: 93b9de2c4710d6b4e9ac38987a064d42
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -7,17 +7,107 @@ ModelImporter:
       1: 100000
     second: //RootNode
   - first:
+      1: 100002
+    second: SK_Veh_Armor_Car_Barrel_01
+  - first:
+      1: 100004
+    second: SK_Veh_Armor_Car_Turret_01
+  - first:
+      1: 100006
+    second: Wheel_fl
+  - first:
+      1: 100008
+    second: Wheel_fr
+  - first:
+      1: 100010
+    second: Wheel_rl
+  - first:
+      1: 100012
+    second: Wheel_rr
+  - first:
       4: 400000
     second: //RootNode
+  - first:
+      4: 400002
+    second: SK_Veh_Armor_Car_Barrel_01
+  - first:
+      4: 400004
+    second: SK_Veh_Armor_Car_Turret_01
+  - first:
+      4: 400006
+    second: Wheel_fl
+  - first:
+      4: 400008
+    second: Wheel_fr
+  - first:
+      4: 400010
+    second: Wheel_rl
+  - first:
+      4: 400012
+    second: Wheel_rr
   - first:
       23: 2300000
     second: //RootNode
   - first:
+      23: 2300002
+    second: SK_Veh_Armor_Car_Barrel_01
+  - first:
+      23: 2300004
+    second: SK_Veh_Armor_Car_Turret_01
+  - first:
+      23: 2300006
+    second: Wheel_fl
+  - first:
+      23: 2300008
+    second: Wheel_fr
+  - first:
+      23: 2300010
+    second: Wheel_rl
+  - first:
+      23: 2300012
+    second: Wheel_rr
+  - first:
       33: 3300000
     second: //RootNode
   - first:
+      33: 3300002
+    second: SK_Veh_Armor_Car_Barrel_01
+  - first:
+      33: 3300004
+    second: SK_Veh_Armor_Car_Turret_01
+  - first:
+      33: 3300006
+    second: Wheel_fl
+  - first:
+      33: 3300008
+    second: Wheel_fr
+  - first:
+      33: 3300010
+    second: Wheel_rl
+  - first:
+      33: 3300012
+    second: Wheel_rr
+  - first:
       43: 4300000
-    second: MountainSkybox
+    second: SK_Veh_Armor_Car_01
+  - first:
+      43: 4300002
+    second: Wheel_fl
+  - first:
+      43: 4300004
+    second: Wheel_rl
+  - first:
+      43: 4300006
+    second: Wheel_fr
+  - first:
+      43: 4300008
+    second: Wheel_rr
+  - first:
+      43: 4300010
+    second: SK_Veh_Armor_Car_Turret_01
+  - first:
+      43: 4300012
+    second: SK_Veh_Armor_Car_Barrel_01
   - first:
       95: 9500000
     second: //RootNode
@@ -66,7 +156,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
@@ -83,9 +173,9 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
-    tangentImportMode: 3
+    normalSmoothAngle: 5
+    normalImportMode: 1
+    tangentImportMode: 1
     normalCalculationMode: 0
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
@@ -107,7 +197,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0

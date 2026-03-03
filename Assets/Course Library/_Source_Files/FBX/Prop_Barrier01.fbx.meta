@@ -1,23 +1,29 @@
 fileFormatVersion: 2
-guid: 2d340581e3fa79c48b1401265c761387
+guid: 5bb9a811cdd73fa42975794b4c22350f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       1: 100000
+    second: Prop_Barrier01
+  - first:
+      1: 100002
     second: //RootNode
   - first:
       4: 400000
+    second: Prop_Barrier01
+  - first:
+      4: 400002
     second: //RootNode
   - first:
       23: 2300000
-    second: //RootNode
+    second: Prop_Barrier01
   - first:
       33: 3300000
-    second: //RootNode
+    second: Prop_Barrier01
   - first:
       43: 4300000
-    second: MountainSkybox
+    second: Prop_Barrier01
   - first:
       95: 9500000
     second: //RootNode
@@ -58,7 +64,7 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 0
-    importBlendShapes: 0
+    importBlendShapes: 1
     importCameras: 0
     importLights: 0
     fileIdsGeneration: 1
@@ -66,7 +72,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
@@ -81,11 +87,11 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
-    tangentImportMode: 3
+    normalImportMode: 1
+    tangentImportMode: 1
     normalCalculationMode: 0
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
@@ -107,7 +113,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0

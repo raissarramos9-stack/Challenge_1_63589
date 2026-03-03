@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d340581e3fa79c48b1401265c761387
+guid: 9054c70a5c9ed454f8ef48a11963db28
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -17,14 +17,20 @@ ModelImporter:
     second: //RootNode
   - first:
       43: 4300000
-    second: MountainSkybox
+    second: road_straight_mesh
   - first:
-      95: 9500000
+      43: 4300002
+    second: Road_straight_mesh
+  - first:
+      43: 4300004
+    second: road_square_mesh
+  - first:
+      111: 11100000
     second: //RootNode
   externalObjects: {}
   materials:
     materialImportMode: 0
-    materialName: 0
+    materialName: 3
     materialSearch: 1
     materialLocation: 0
   animations:
@@ -58,7 +64,7 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 0
-    importBlendShapes: 0
+    importBlendShapes: 1
     importCameras: 0
     importLights: 0
     fileIdsGeneration: 1
@@ -66,7 +72,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
@@ -81,11 +87,11 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
-    tangentImportMode: 3
+    normalSmoothAngle: 10
+    normalImportMode: 1
+    tangentImportMode: 1
     normalCalculationMode: 0
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
@@ -107,14 +113,14 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
-  additionalBone: 0
+  additionalBone: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
