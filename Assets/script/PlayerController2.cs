@@ -25,9 +25,10 @@ public class PlayerController2 : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-        }
+       if (Input.GetKeyDown(KeyCode.Space))
+{
+    Vector3 spawnPos = transform.position + new Vector3(0, 0, 1); // um pouco à frente
+    Instantiate(projectilePrefab, spawnPos, projectilePrefab.transform.rotation);
+}
     }
 }

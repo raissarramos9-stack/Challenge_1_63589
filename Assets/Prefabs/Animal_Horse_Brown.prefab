@@ -1792,6 +1792,9 @@ GameObject:
   - component: {fileID: 7592761207804615878}
   - component: {fileID: 7650187365012903162}
   - component: {fileID: 8800733769667960282}
+  - component: {fileID: -8646421272804795701}
+  - component: {fileID: 193707585465735002}
+  - component: {fileID: -4938572557077894844}
   m_Layer: 0
   m_Name: Animal_Horse_Brown
   m_TagString: Untagged
@@ -1854,7 +1857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2408974b96cb82643b382589db0e0011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Avance
-  speed: 40
+  speed: 10
 --- !u!114 &8800733769667960282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1867,6 +1870,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077eba31f73381449b929b17e7e8364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyOutOfBounds
+--- !u!65 &-8646421272804795701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659581097139781348}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8, y: 1, z: 0.8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &193707585465735002
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659581097139781348}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-4938572557077894844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659581097139781348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8ff3165e495b94a86a159b56c1039b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
 --- !u!1 &7883846039922360639
 GameObject:
   m_ObjectHideFlags: 0

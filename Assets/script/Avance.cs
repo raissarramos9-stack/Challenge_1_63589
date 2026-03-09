@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Avance : MonoBehaviour
 {
-    public float speed = 40.0f;
+    public float speed = 10f;
 
     void Update()
     {

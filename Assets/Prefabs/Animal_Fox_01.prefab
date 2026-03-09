@@ -840,6 +840,9 @@ GameObject:
   - component: {fileID: 8098756715818131792}
   - component: {fileID: 3462665373497826313}
   - component: {fileID: 4766744932240119690}
+  - component: {fileID: -270018257207753764}
+  - component: {fileID: -2586312597373140681}
+  - component: {fileID: 8467355029351591731}
   m_Layer: 0
   m_Name: Animal_Fox_01
   m_TagString: Untagged
@@ -908,7 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2408974b96cb82643b382589db0e0011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Avance
-  speed: 40
+  speed: 10
 --- !u!114 &4766744932240119690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +924,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d077eba31f73381449b929b17e7e8364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyOutOfBounds
+--- !u!65 &-270018257207753764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812421882055587171}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8, y: 1, z: 0.8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-2586312597373140681
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812421882055587171}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8467355029351591731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812421882055587171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8ff3165e495b94a86a159b56c1039b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
 --- !u!1 &7845266465259066627
 GameObject:
   m_ObjectHideFlags: 0
