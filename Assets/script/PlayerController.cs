@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 1️⃣ Ler entradas
+        // 1️ Ler entradas
         float inputVertical = Input.GetAxis("Vertical");     // acelera / trava
         float inputHorizontal = Input.GetAxis("Horizontal"); // vira
 
-        // 2️⃣ Aceleração e desaceleração
+        // 2️ Aceleração e desaceleração
         if (inputVertical > 0)
             velocidadeAtual += inputVertical * aceleracao * Time.deltaTime;
         else if (inputVertical < 0)
@@ -45,14 +45,14 @@ public class PlayerController : MonoBehaviour
 
         velocidadeAtual = Mathf.Clamp(velocidadeAtual, -velocidadeMaxima, velocidadeMaxima);
 
-        // 3️⃣ Movimento
+        // 3️ Movimento
         Vector3 movimento = transform.forward * velocidadeAtual * Time.deltaTime;
         transform.Translate(movimento, Space.World);
 
-        // 4️⃣ Só vira se estiver em movimento
+        // 4️ Só vira se estiver em movimento
         if (Mathf.Abs(velocidadeAtual) > 0.1f)
         {
-            // 5️⃣ Corrigir direção quando em marcha-atrás
+            // 5️ Corrigir direção quando em marcha-atrás
             float direcao = velocidadeAtual > 0 ? 1f : -1f;
             transform.Rotate(0, inputHorizontal * velocidadeViragem * Time.deltaTime * direcao, 0);
         }

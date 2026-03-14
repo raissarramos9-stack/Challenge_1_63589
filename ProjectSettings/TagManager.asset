@@ -9,6 +9,8 @@ TagManager:
   - Food
   - Dog
   - Ball
+  - Animal
+  - Ground
   layers:
   - Default
   - TransparentFX
