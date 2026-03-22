@@ -648,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3303195482613169217, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03297709
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 3303195482613169217, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -686,6 +686,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+      propertyPath: lengthInSec
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 6.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -701,15 +717,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03297709
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0284127
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.55500257
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -738,6 +754,14 @@ PrefabInstance:
     - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: lengthInSec
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 4356800953600124292, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
       propertyPath: m_Name
@@ -984,7 +1008,7 @@ MonoBehaviour:
   modificadorGravidade: 10
   estaNoChao: 1
   gameOver: 0
-  particulaExplosao: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+  particulaExplosao: {fileID: 1900708973}
   particulaPoeira: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
   somSalto: {fileID: 8300000, guid: 113ee460fadc340e4957a7404a9fbb27, type: 3}
   somBatida: {fileID: 8300000, guid: 4bcde6de2166e41e284ec46d8a01fb90, type: 3}
@@ -1089,6 +1113,11 @@ AudioSource:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7169122e91e1981469b2b6045ddf7963, type: 3}
   m_PrefabInstance: {fileID: 1865640243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1900708973 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
+  m_PrefabInstance: {fileID: 1576877664}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2014335011
 GameObject:

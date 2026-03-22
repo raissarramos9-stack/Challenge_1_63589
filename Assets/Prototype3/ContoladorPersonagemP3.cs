@@ -24,57 +24,66 @@ public class ControladorPersonagemP3 : MonoBehaviour
 
     void Start()
     {
-        // Inicialização de componentes
         rbJogador = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         somJogador = GetComponent<AudioSource>();
 
-        // Ajuste da gravidade para o salto não parecer "lunar"
         Physics.gravity = new Vector3(0, -9.81f, 0) * modificadorGravidade;
 
-        // Garante que a poeira começa a tocar se o jogo inicia no chão
-        if (particulaPoeira != null) { particulaPoeira.Play(); }
+        if (particulaPoeira != null)
+        {
+            particulaPoeira.Play();
+        }
     }
 
     void Update()
     {
-        // Comando de Salto: Espaço + No Chão + Jogo Ativo
         if (Input.GetKeyDown(KeyCode.Space) && estaNoChao && !gameOver)
         {
             rbJogador.AddForce(Vector3.up * forcaSalto, ForceMode.Impulse);
             estaNoChao = false;
 
-            // Ativa animação e som de salto
             playerAnim.SetTrigger("Jump_trig");
             somJogador.PlayOneShot(somSalto, 1.0f);
 
-            // Para a poeira enquanto está no ar
-            if (particulaPoeira != null) { particulaPoeira.Stop(); }
+            if (particulaPoeira != null)
+            {
+                particulaPoeira.Stop();
+            }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Deteta colisão com o Chão
         if (collision.gameObject.CompareTag("Ground") && !gameOver)
         {
             estaNoChao = true;
-            // Reinicia a poeira ao aterrar
-            if (particulaPoeira != null) { particulaPoeira.Play(); }
+
+            if (particulaPoeira != null)
+            {
+                particulaPoeira.Play();
+            }
         }
-        // Deteta colisão com Obstáculos
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle") && !gameOver)
         {
             gameOver = true;
             Debug.Log("Game Over: Colisão detectada.");
 
-            // Ativa animações de queda
-           playerAnim.SetTrigger("Death");
+            playerAnim.SetTrigger("Death");
 
-            // Efeitos de explosão e som de impacto
-            if (particulaExplosao != null) { particulaExplosao.Play(); }
-            if (particulaPoeira != null) { particulaPoeira.Stop(); }
-            
+            // 💥 EXPLOSÃO
+            if (particulaExplosao != null)
+            {
+                particulaExplosao.transform.position = transform.position;
+                particulaExplosao.Play();
+            }
+
+            // Poeira para
+            if (particulaPoeira != null)
+            {
+                particulaPoeira.Stop();
+            }
+
             somJogador.PlayOneShot(somBatida, 1.0f);
         }
     }
