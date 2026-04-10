@@ -14,10 +14,11 @@ public class MoverCenarioEsquerda : MonoBehaviour
     {
         if (scriptControle != null && !scriptControle.gameOver)
         {
-            // AGORA PRA DIREITA (ok!)
-            transform.Translate(Vector3.right * Time.deltaTime * velocidade);
+            // MOVE PARA A DIREITA
+            transform.Translate(Vector3.right * velocidade * Time.deltaTime);
         }
 
+        // DESTROI QUANDO SAIR DA TELA (lado direito)
         if (transform.position.x > 200 && gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);

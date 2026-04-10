@@ -12,7 +12,7 @@ public class ScrollChao : MonoBehaviour
 
     void Update()
     {
-        float offset = Time.time * velocidade;
+        float offset = Mathf.Repeat(Time.time * velocidade, 1);
         rend.material.mainTextureOffset = new Vector2(offset, 0);
     }
 }

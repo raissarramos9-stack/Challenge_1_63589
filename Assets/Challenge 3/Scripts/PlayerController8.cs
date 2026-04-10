@@ -15,11 +15,11 @@ public class PlayerController8 : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip explodeSound;
 
-    // 🔥 limites
+    // limites
     public float maxHeight = 15f;
     public float minHeight = 0f;
 
-    // 🔥 bounce
+    // bounce
     public float bounceForce = 10f;
     public AudioClip bounceSound;
 
@@ -35,31 +35,29 @@ public class PlayerController8 : MonoBehaviour
 
     void Update()
     {
-        // 🔥 subir
-        if (Input.GetKey(KeyCode.Space) && !gameOver && transform.position.y < maxHeight)
+        if (gameOver) return;
+
+        // subir
+        if (Input.GetKey(KeyCode.Space) && transform.position.y < maxHeight)
         {
             playerRb.AddForce(Vector3.up * floatForce);
         }
 
-        // 🔥 trava no topo
+        // trava no topo
         if (transform.position.y > maxHeight)
         {
             playerRb.linearVelocity = new Vector3(playerRb.linearVelocity.x, 0, playerRb.linearVelocity.z);
         }
 
-        // 🔥 limite inferior + bounce
+        // limite inferior + bounce
         if (transform.position.y < minHeight)
         {
-            // trava no chão
             transform.position = new Vector3(transform.position.x, minHeight, transform.position.z);
 
-            // zera velocidade antes do bounce (IMPORTANTE)
             playerRb.linearVelocity = new Vector3(playerRb.linearVelocity.x, 0, playerRb.linearVelocity.z);
 
-            // aplica força pra cima
             playerRb.AddForce(Vector3.up * bounceForce, ForceMode.Impulse);
 
-            // som
             if (bounceSound != null)
             {
                 playerAudio.PlayOneShot(bounceSound, 1.0f);
@@ -67,20 +65,32 @@ public class PlayerController8 : MonoBehaviour
         }
     }
 
-   private void OnTriggerEnter(Collider other)
-{
-    if (other.gameObject.CompareTag("Bomb") && !gameOver)
+    private void OnTriggerEnter(Collider other)
     {
-        gameOver = true;
+        // DEBUG pra garantir que está detectando colisão
+        Debug.Log("GAME OVER ");
 
-        Debug.Log("GAME OVER"); // 🔥 AGORA VAI APARECER
+        if (other.CompareTag("Bomb") && !gameOver)
+        {
+            gameOver = true;
 
-        explosionParticle.transform.position = transform.position;
-        explosionParticle.Play();
+            Debug.Log("GAME OVER"); // 🔥 vai aparecer no Console
 
-        playerAudio.PlayOneShot(explodeSound, 1.0f);
+            // Partícula
+            if (explosionParticle != null)
+            {
+                explosionParticle.transform.position = transform.position;
+                explosionParticle.Play();
+            }
 
-        Destroy(other.gameObject);
+            // Som
+            if (explodeSound != null)
+            {
+                playerAudio.PlayOneShot(explodeSound, 1.0f);
+            }
+
+            // Destroi a bomba
+            Destroy(other.gameObject);
+        }
     }
-}
 }
