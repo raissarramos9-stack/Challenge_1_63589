@@ -11,6 +11,8 @@ TagManager:
   - Ball
   - Animal
   - Ground
+  - Powerup
+  - Enemy
   layers:
   - Default
   - TransparentFX

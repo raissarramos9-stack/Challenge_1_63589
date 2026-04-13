@@ -3,11 +3,17 @@ using UnityEngine;
 public class SpawnManager13 : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject powerupPrefab; // 👈 ADICIONADO
+
     private float spawnRange = 9f;
 
     void Start()
     {
+        // spawn inimigo
         Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+
+        // spawn powerup 👇
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }
 
     private Vector3 GenerateSpawnPosition()
@@ -15,8 +21,6 @@ public class SpawnManager13 : MonoBehaviour
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
         float spawnPosZ = Random.Range(-spawnRange, spawnRange);
 
-        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
-
-        return randomPos;
+        return new Vector3(spawnPosX, 0, spawnPosZ);
     }
 }
