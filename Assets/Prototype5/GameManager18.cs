@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; // 🔥 necessário
+using UnityEngine.SceneManagement;
 
 public class GameManager18 : MonoBehaviour
 {
@@ -10,37 +10,47 @@ public class GameManager18 : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public GameObject gameOverText;
-    public GameObject restartButton; // 🔥 NOVO
+    public GameObject restartButton;
+    public GameObject titleScreen;
 
     private int score;
 
     [SerializeField] private float spawnRate = 1f;
-    private bool isGameActive = true;
+    private float baseSpawnRate;
+
+    private bool isGameActive = false;
 
     void Start()
     {
         Time.timeScale = 1f;
 
+        baseSpawnRate = spawnRate;
+
         score = 0;
+        UpdateScore(0);
 
-        if (scoreText != null)
-        {
-            UpdateScore(0);
-        }
-        else
-        {
-            Debug.LogError("Score Text não foi atribuído no Inspector!");
-        }
+        // 🔥 garante estados corretos no início
+        if (gameOverText != null) gameOverText.SetActive(false);
+        if (restartButton != null) restartButton.SetActive(false);
 
-        // 🔥 começa escondido
-        if (gameOverText != null)
-        {
-            gameOverText.SetActive(false);
-        }
+        // 🔥 ISSO FALTAVA (principal erro)
+        if (titleScreen != null) titleScreen.SetActive(true);
+    }
 
-        if (restartButton != null)
+    public void StartGame(int difficulty)
+    {
+        if (isGameActive) return;
+
+        isGameActive = true;
+
+        spawnRate = baseSpawnRate / difficulty;
+
+        score = 0;
+        UpdateScore(0);
+
+        if (titleScreen != null)
         {
-            restartButton.SetActive(false);
+            titleScreen.SetActive(false); // 🔥 esconde menu
         }
 
         StartCoroutine(SpawnTarget());
@@ -89,19 +99,10 @@ public class GameManager18 : MonoBehaviour
         isGameActive = false;
         Time.timeScale = 0f;
 
-        // 🔥 mostra UI
-        if (gameOverText != null)
-        {
-            gameOverText.SetActive(true);
-        }
-
-        if (restartButton != null)
-        {
-            restartButton.SetActive(true);
-        }
+        if (gameOverText != null) gameOverText.SetActive(true);
+        if (restartButton != null) restartButton.SetActive(true);
     }
 
-    // 🔥 FUNÇÃO DO BOTÃO
     public void RestartGame()
     {
         Time.timeScale = 1f;

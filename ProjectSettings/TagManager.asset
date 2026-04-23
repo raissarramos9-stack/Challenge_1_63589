@@ -16,6 +16,7 @@ TagManager:
   - EnemyGoal
   - PlayerGoal
   - Bad
+  - DifficultyButton
   layers:
   - Default
   - TransparentFX
