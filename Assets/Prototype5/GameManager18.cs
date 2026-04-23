@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement; // 🔥 necessário
 
 public class GameManager18 : MonoBehaviour
 {
     public List<GameObject> targets;
 
     public TextMeshProUGUI scoreText;
+    public GameObject gameOverText;
+    public GameObject restartButton; // 🔥 NOVO
+
     private int score;
 
     [SerializeField] private float spawnRate = 1f;
@@ -15,7 +19,7 @@ public class GameManager18 : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1f; // 🔥 garante que o jogo começa normal
+        Time.timeScale = 1f;
 
         score = 0;
 
@@ -26,6 +30,17 @@ public class GameManager18 : MonoBehaviour
         else
         {
             Debug.LogError("Score Text não foi atribuído no Inspector!");
+        }
+
+        // 🔥 começa escondido
+        if (gameOverText != null)
+        {
+            gameOverText.SetActive(false);
+        }
+
+        if (restartButton != null)
+        {
+            restartButton.SetActive(false);
         }
 
         StartCoroutine(SpawnTarget());
@@ -71,7 +86,25 @@ public class GameManager18 : MonoBehaviour
     {
         Debug.Log("GAME OVER");
 
-        isGameActive = false; // 🔥 para o spawn
-        Time.timeScale = 0f;  // 🔥 PARA TUDO (movimento, física, etc)
+        isGameActive = false;
+        Time.timeScale = 0f;
+
+        // 🔥 mostra UI
+        if (gameOverText != null)
+        {
+            gameOverText.SetActive(true);
+        }
+
+        if (restartButton != null)
+        {
+            restartButton.SetActive(true);
+        }
+    }
+
+    // 🔥 FUNÇÃO DO BOTÃO
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
