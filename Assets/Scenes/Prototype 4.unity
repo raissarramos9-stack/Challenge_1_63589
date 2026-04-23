@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: ac7bfb1822d576f44950ad71853e2648, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 19a92bf521e304876b631342a119543c, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -213,7 +213,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0fbb78d342da636408bdaf551e8286b7, type: 2}
+  - {fileID: 2100000, guid: 4c97b24d72ebade4d98acaf3b75c90ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,6 +879,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager13
   enemyPrefab: {fileID: 2104794586709439522, guid: 8cd96bf04ef64c947aa392cfcc66773d, type: 3}
   powerupPrefab: {fileID: 7395798072477226895, guid: 0c1e7c497a5db7649a02bf02a3860a87, type: 3}
+  enemyCount: 0
+  waveNumber: 1
 --- !u!4 &2127403889
 Transform:
   m_ObjectHideFlags: 0
