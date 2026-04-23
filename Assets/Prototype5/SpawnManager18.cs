@@ -1,24 +1,52 @@
+using System.Collections;
 using UnityEngine;
 
 public class SpawnManager18 : MonoBehaviour
 {
     public GameObject[] targets;
 
-    public float spawnRate = 1.0f;
+    [SerializeField] private float spawnRate = 1f;
+    [SerializeField] private float badSpawnChance = 0.25f;
+
     private float xRange = 4f;
-    private float ySpawnPos = -3f;
+    private float ySpawnPos = -2f;
 
     void Start()
     {
-        InvokeRepeating("SpawnTarget", 1f, spawnRate);
+        if (targets == null || targets.Length == 0)
+        {
+            Debug.LogError("Nenhum target atribuído!");
+            return;
+        }
+
+        StartCoroutine(SpawnRoutine());
     }
 
-    void SpawnTarget()
+    IEnumerator SpawnRoutine()
     {
-        int index = Random.Range(0, targets.Length);
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnRate);
 
-        Vector2 spawnPos = new Vector2(Random.Range(-xRange, xRange), ySpawnPos);
+            int index;
 
-        Instantiate(targets[index], spawnPos, targets[index].transform.rotation);
+            // decide se é ruim ou bom
+            if (targets.Length > 1 && Random.value < badSpawnChance)
+            {
+                index = targets.Length - 1; // último = ruim
+            }
+            else
+            {
+                index = Random.Range(0, targets.Length - 1);
+            }
+
+            Vector2 spawnPos = new Vector2(
+                Random.Range(-xRange, xRange),
+                ySpawnPos
+            );
+
+            // 🔥 CORREÇÃO PRINCIPAL AQUI
+            Instantiate(targets[index], spawnPos, targets[index].transform.rotation);
+        }
     }
 }

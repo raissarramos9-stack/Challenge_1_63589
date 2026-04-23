@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &4486400873686784001
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -178,3 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16efcab88642a9247aa15944fed84e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target18
+  pointValue: -5
+  isBad: 1
+  explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
