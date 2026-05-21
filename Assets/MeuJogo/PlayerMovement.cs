@@ -9,8 +9,12 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(x, 0, z);
+        Vector3 move = new Vector3(x, 0f, z);
 
-        transform.Translate(move * speed * Time.deltaTime);
+        // Evita andar mais rápido na diagonal
+        move = Vector3.ClampMagnitude(move, 1f);
+
+        // Movimento suave e consistente
+        transform.Translate(move * speed * Time.deltaTime, Space.World);
     }
 }

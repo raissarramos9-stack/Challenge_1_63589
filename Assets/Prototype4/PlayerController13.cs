@@ -6,24 +6,43 @@ public class PlayerController13 : MonoBehaviour
     private Rigidbody playerRb;
 
     public Transform cameraTransform;
-    public float speed = 5.0f;
+    public float speed = 2.0f;
 
+    // verifica se o player está com power-up
     public bool hasPowerup;
-    private float powerupStrength = 15.0f;
 
-    public GameObject powerupIndicator; // 👈 NOVO
+    // força do empurrão
+    public float powerupStrength = 2000f;
+
+    // indicador visual
+    public GameObject powerupIndicator;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+
+        // indicador começa invisível
+        if (powerupIndicator != null)
+        {
+            powerupIndicator.SetActive(false);
+        }
     }
 
     void Update()
     {
-        // mantém o indicador seguindo o player
+        // indicador segue o player
         if (powerupIndicator != null)
         {
-            powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+            powerupIndicator.transform.position =
+                transform.position + new Vector3(0, -0.5f, 0);
+        }
+
+        // game over se cair da arena
+        if (transform.position.y < -10f)
+        {
+            Debug.Log("GAME OVER");
+
+            Time.timeScale = 0;
         }
     }
 
@@ -32,49 +51,92 @@ public class PlayerController13 : MonoBehaviour
         float forwardInput = Input.GetAxis("Vertical");
 
         Vector3 forward = cameraTransform.forward;
+
+        // impede movimento vertical
         forward.y = 0;
+
         forward.Normalize();
 
-        playerRb.AddForce(forward * speed * forwardInput);
+        // movimentação do player
+        playerRb.AddForce(
+            forward * speed * forwardInput,
+            ForceMode.Force
+        );
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // pegou power-up
         if (other.CompareTag("Powerup"))
         {
             hasPowerup = true;
-            Destroy(other.gameObject);
 
             // ativa indicador
-            powerupIndicator.SetActive(true);
+            if (powerupIndicator != null)
+            {
+                powerupIndicator.SetActive(true);
+            }
 
+            // remove power-up da arena
+            Destroy(other.gameObject);
+
+            // inicia contador
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && hasPowerup)
+        // tocou no inimigo
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
-
-            if (enemyRb != null)
+            // se estiver com power-up
+            if (hasPowerup)
             {
-                Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
-                awayFromPlayer.y = 0;
+                Rigidbody enemyRb =
+                    collision.gameObject.GetComponent<Rigidbody>();
 
-                enemyRb.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
+                if (enemyRb != null)
+                {
+                    // direção para longe do player
+                    Vector3 awayFromPlayer =
+                        collision.transform.position - transform.position;
+
+                    awayFromPlayer.y = 0;
+
+                    // limpa velocidade antiga
+                    enemyRb.linearVelocity = Vector3.zero;
+
+                    // lança inimigo pra longe
+                    enemyRb.AddForce(
+                        awayFromPlayer.normalized * powerupStrength,
+                        ForceMode.Impulse
+                    );
+
+                    Debug.Log("INIMIGO EMPURRADO");
+                }
+            }
+            else
+            {
+                // sem power-up = game over
+                Debug.Log("GAME OVER");
+
+                Time.timeScale = 0;
             }
         }
     }
 
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(7);
+        // duração do power-up
+        yield return new WaitForSeconds(5);
 
         hasPowerup = false;
 
-        // desativa indicador
-        powerupIndicator.SetActive(false);
+        // desliga indicador
+        if (powerupIndicator != null)
+        {
+            powerupIndicator.SetActive(false);
+        }
     }
 }

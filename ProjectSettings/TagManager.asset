@@ -17,6 +17,10 @@ TagManager:
   - PlayerGoal
   - Bad
   - DifficultyButton
+  - Yellow
+  - Cylinder
+  - Red
+  - Collectible
   layers:
   - Default
   - TransparentFX

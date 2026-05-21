@@ -1,51 +1,75 @@
 using UnityEngine;
+using System.Collections;
 
 public class SpawnManager13 : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public GameObject powerupPrefab; // 👈 power-up prefab
+    public GameObject powerupPrefab;
 
     private float spawnRange = 9f;
 
-    public int enemyCount;
-    public int waveNumber = 1;
-
     void Start()
     {
-        // primeira wave
-        SpawnEnemyWave(waveNumber);
+        // primeiro inimigo
+        SpawnEnemy();
 
-        // spawn inicial do power-up
-        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        // primeiro power-up
+        SpawnPowerup();
+
+        // começa rotinas
+        StartCoroutine(SpawnEnemiesRoutine());
+        StartCoroutine(SpawnPowerupsRoutine());
     }
 
-    void Update()
+    // cria 1 inimigo
+    void SpawnEnemy()
     {
-        enemyCount = FindObjectsByType<Inimigo13>(FindObjectsSortMode.None).Length;
+        Instantiate(
+            enemyPrefab,
+            GenerateSpawnPosition(),
+            enemyPrefab.transform.rotation
+        );
+    }
 
-        if (enemyCount == 0)
+    // cria 1 power-up
+    void SpawnPowerup()
+    {
+        Instantiate(
+            powerupPrefab,
+            GenerateSpawnPosition(),
+            powerupPrefab.transform.rotation
+        );
+    }
+
+    // inimigo a cada 6 segundos
+    IEnumerator SpawnEnemiesRoutine()
+    {
+        while (true)
         {
-            waveNumber++;
+            yield return new WaitForSeconds(6);
 
-            // 👇 spawn power-up ANTES da nova wave
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
-
-            SpawnEnemyWave(waveNumber);
+            SpawnEnemy();
         }
     }
 
-    void SpawnEnemyWave(int enemiesToSpawn)
+    // power-up a cada 6 segundos
+    IEnumerator SpawnPowerupsRoutine()
     {
-        for (int i = 0; i < enemiesToSpawn; i++)
+        while (true)
         {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            yield return new WaitForSeconds(6);
+
+            SpawnPowerup();
         }
     }
 
     private Vector3 GenerateSpawnPosition()
     {
-        float spawnPosX = Random.Range(-spawnRange, spawnRange);
-        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        float spawnPosX =
+            Random.Range(-spawnRange, spawnRange);
+
+        float spawnPosZ =
+            Random.Range(-spawnRange, spawnRange);
 
         return new Vector3(spawnPosX, 0, spawnPosZ);
     }
