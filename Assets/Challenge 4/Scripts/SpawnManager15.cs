@@ -8,9 +8,9 @@ public class SpawnManager15 : MonoBehaviour
     public GameObject powerupPrefab;
     public GameObject player;
 
-    private float spawnRangeX = 10;
-    private float spawnZMin = 15;
-    private float spawnZMax = 25;
+    private float spawnRangeX = 6;
+    private float spawnZMin = 10;
+    private float spawnZMax = 15;
 
     private int waveCount = 1;
     private bool waveInProgress = false;
@@ -36,6 +36,7 @@ public class SpawnManager15 : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         waveCount++;
+
         SpawnEnemyWave(waveCount);
 
         waveInProgress = false;
@@ -43,30 +44,46 @@ public class SpawnManager15 : MonoBehaviour
 
     Vector3 GenerateSpawnPosition()
     {
-        float xPos = Random.Range(-spawnRangeX, spawnRangeX);
-        float zPos = Random.Range(spawnZMin, spawnZMax);
+        float xPos =
+            Random.Range(-spawnRangeX, spawnRangeX);
+
+        float zPos =
+            Random.Range(spawnZMin, spawnZMax);
+
         return new Vector3(xPos, 0, zPos);
     }
 
     void SpawnEnemyWave(int enemiesToSpawn)
     {
-        // power-up
+        // ---------- POWERUP ----------
         if (GameObject.FindGameObjectsWithTag("Powerup").Length == 0)
         {
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            Instantiate(
+                powerupPrefab,
+                GenerateSpawnPosition(),
+                powerupPrefab.transform.rotation
+            );
         }
 
-        // inimigos com velocidade crescente 🔥
+        // ---------- ENEMIES ----------
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            GameObject enemy =
+                Instantiate(
+                    enemyPrefab,
+                    GenerateSpawnPosition(),
+                    enemyPrefab.transform.rotation
+                );
 
-            Enemy15 enemyScript = enemy.GetComponent<Enemy15>();
+            Enemy15 enemyScript =
+                enemy.GetComponent<Enemy15>();
 
             if (enemyScript != null)
             {
-                // aumenta velocidade a cada wave
-                enemyScript.SetSpeed(20f + waveCount * 2f);
+                // VELOCIDADE MAIS DEVAGAR 😄
+                enemyScript.SetSpeed(
+                    2f + waveCount * 0.5f
+                );
             }
         }
 
@@ -77,13 +94,18 @@ public class SpawnManager15 : MonoBehaviour
     {
         if (player != null)
         {
-            player.transform.position = new Vector3(0, 1, -7);
+            player.transform.position =
+                new Vector3(0, 1, -7);
 
-            Rigidbody rb = player.GetComponent<Rigidbody>();
+            Rigidbody rb =
+                player.GetComponent<Rigidbody>();
 
-            // mais compatível com todas versões
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            if (rb != null)
+            {
+                // ZERA VELOCIDADE
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
         }
     }
 }

@@ -3,7 +3,10 @@ using System.Collections;
 
 public class Inimigo13 : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 16f;
+
+    // CONTADOR DE GANHOS
+    private static int ganhos = 0;
 
     private Rigidbody enemyRb;
     private Transform player;
@@ -15,7 +18,8 @@ public class Inimigo13 : MonoBehaviour
     {
         enemyRb = GetComponent<Rigidbody>();
 
-        GameObject playerObj = GameObject.Find("Player");
+        GameObject playerObj =
+            GameObject.Find("Player");
 
         if (playerObj != null)
         {
@@ -25,7 +29,8 @@ public class Inimigo13 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player == null || !canMove) return;
+        if (player == null || !canMove)
+            return;
 
         // direção até player
         Vector3 lookDirection =
@@ -36,11 +41,26 @@ public class Inimigo13 : MonoBehaviour
             lookDirection * speed,
             ForceMode.Force
         );
+
+        // VERIFICA SE O INIMIGO CAIU
+        if (transform.position.y < -5f)
+        {
+            // soma ganho
+            ganhos++;
+
+            // mostra no console
+            Debug.Log("+1 ganho! Total: " + ganhos);
+
+            // destrói inimigo
+            Destroy(gameObject);
+        }
     }
 
     public void Knockback(Vector3 force)
     {
-        StartCoroutine(KnockbackRoutine(force));
+        StartCoroutine(
+            KnockbackRoutine(force)
+        );
     }
 
     IEnumerator KnockbackRoutine(Vector3 force)
@@ -49,10 +69,14 @@ public class Inimigo13 : MonoBehaviour
         canMove = false;
 
         // limpa velocidade antiga
-        enemyRb.linearVelocity = Vector3.zero;
+        enemyRb.linearVelocity =
+            Vector3.zero;
 
         // aplica empurrão
-        enemyRb.AddForce(force, ForceMode.Impulse);
+        enemyRb.AddForce(
+            force,
+            ForceMode.Impulse
+        );
 
         // espera um pouco
         yield return new WaitForSeconds(1f);

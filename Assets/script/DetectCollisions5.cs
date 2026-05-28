@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class DetectCollisions5 : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
+        // COLISÃO COM ANIMAL
         if (other.CompareTag("Animal"))
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            // DESATIVA O ANIMAL (POOLING)
+            other.gameObject.SetActive(false);
+
+            // DESATIVA O PROJÉTIL
+            gameObject.SetActive(false);
         }
     }
 }
